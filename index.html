@@ -287,6 +287,57 @@
   .info-value.accent { color: var(--accent); }
   .info-value.warn { color: var(--warn); }
 
+  /* SIDE EFFECTS SECTION */
+  .sideeffect-section {
+    margin-bottom: 28px;
+  }
+  .sideeffect-section-title {
+    font-size: 12px;
+    font-family: 'DM Mono', monospace;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 10px 16px;
+    border-radius: 8px;
+    margin-bottom: 14px;
+    font-weight: 600;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .sideeffect-major-title {
+    background: rgba(239,68,68,0.1);
+    border: 1px solid rgba(239,68,68,0.25);
+    color: #fca5a5;
+  }
+  .sideeffect-moderate-title {
+    background: rgba(245,158,11,0.1);
+    border: 1px solid rgba(245,158,11,0.25);
+    color: #fcd34d;
+  }
+  .sideeffect-minor-title {
+    background: rgba(34,197,94,0.1);
+    border: 1px solid rgba(34,197,94,0.25);
+    color: #86efac;
+  }
+  .sideeffect-list { display: flex; flex-direction: column; gap: 10px; }
+  .sideeffect-item {
+    display: flex; align-items: flex-start; gap: 12px;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 14px 18px;
+    transition: border-color 0.2s;
+  }
+  .sideeffect-item:hover { border-color: rgba(255,255,255,0.15); }
+  .sideeffect-dot {
+    width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; margin-top: 4px;
+  }
+  .sideeffect-dot-major { background: var(--danger); }
+  .sideeffect-dot-moderate { background: var(--warn); }
+  .sideeffect-dot-minor { background: #22c55e; }
+  .sideeffect-content { flex: 1; }
+  .sideeffect-name { font-size: 14px; font-weight: 500; color: var(--text); }
+  .sideeffect-note { font-size: 12px; color: var(--muted); margin-top: 3px; line-height: 1.5; }
+  .sideeffect-frequency { font-size: 11px; color: var(--muted); margin-top: 4px; font-style: italic; }
+
   /* INTERACTION LIST */
   .section-title {
     font-size: 13px;
@@ -585,6 +636,7 @@
         <div class="drug-tabs">
           <div class="tab active" onclick="switchTab('summary', this)">In Plain English</div>
           <div class="tab" onclick="switchTab('overview', this)">Overview</div>
+          <div class="tab" onclick="switchTab('sideeffects', this)">Side Effects</div>
           <div class="tab" onclick="switchTab('interactions', this)">Interactions</div>
           <div class="tab" onclick="switchTab('manufacturers', this)">Manufacturers</div>
           <div class="tab" onclick="switchTab('dosage', this)">Dosage</div>
@@ -620,7 +672,7 @@
         </div>
 
         <!-- OVERVIEW TAB -->
-        <div class="tab-content active" id="tab-overview">
+        <div class="tab-content" id="tab-overview">
           <div class="info-grid">
             <div class="info-card">
               <div class="info-label">Drug Class</div>
@@ -651,6 +703,13 @@
           <p style="font-size:14px;color:var(--muted);line-height:1.8;background:var(--bg);border:1px solid var(--border);border-radius:12px;padding:16px 18px;">
             Metformin works primarily by <strong style="color:var(--text)">inhibiting hepatic glucose production</strong> (gluconeogenesis) in the liver. It activates AMP-activated protein kinase (AMPK), which improves insulin sensitivity and reduces intestinal glucose absorption. Unlike sulfonylureas, it does not stimulate insulin secretion and is not associated with hypoglycemia when used as monotherapy.
           </p>
+        </div>
+
+        <!-- SIDE EFFECTS TAB -->
+        <div class="tab-content" id="tab-sideeffects">
+          <div id="sideEffectsContent">
+            <!-- Will be populated by JavaScript -->
+          </div>
         </div>
 
         <!-- INTERACTIONS TAB -->
@@ -734,36 +793,6 @@
                 <span style="font-size:13px;font-weight:600;color:var(--accent)">₹18–35 / strip of 15</span>
               </div>
             </div>
-            <div class="mfr-card">
-              <div class="mfr-header">
-                <div class="mfr-logo-placeholder">🏭</div>
-                <div><div class="mfr-name">Lupin Pharmaceuticals</div><div class="mfr-country">🇮🇳 India</div></div>
-              </div>
-              <div class="mfr-stats">
-                <div class="mfr-stat"><div class="mfr-stat-label">Est.</div><div class="mfr-stat-value">1968</div></div>
-                <div class="mfr-stat"><div class="mfr-stat-label">Brand</div><div class="mfr-stat-value">Gluconorm®</div></div>
-                <div class="mfr-stat"><div class="mfr-stat-label">Rating</div><div class="mfr-stat-value" style="color:var(--accent)">A</div></div>
-              </div>
-              <div style="margin-top:10px;padding-top:10px;border-top:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;">
-                <span style="font-size:10px;font-family:'DM Mono',monospace;letter-spacing:1px;text-transform:uppercase;color:var(--muted);">Price</span>
-                <span style="font-size:13px;font-weight:600;color:var(--accent)">₹20–38 / strip of 15</span>
-              </div>
-            </div>
-            <div class="mfr-card">
-              <div class="mfr-header">
-                <div class="mfr-logo-placeholder">🏭</div>
-                <div><div class="mfr-name">Corona Remedies</div><div class="mfr-country">🇮🇳 India</div></div>
-              </div>
-              <div class="mfr-stats">
-                <div class="mfr-stat"><div class="mfr-stat-label">Est.</div><div class="mfr-stat-value">1993</div></div>
-                <div class="mfr-stat"><div class="mfr-stat-label">Brand</div><div class="mfr-stat-value">Obimet®</div></div>
-                <div class="mfr-stat"><div class="mfr-stat-label">Rating</div><div class="mfr-stat-value" style="color:var(--accent)">A</div></div>
-              </div>
-              <div style="margin-top:10px;padding-top:10px;border-top:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;">
-                <span style="font-size:10px;font-family:'DM Mono',monospace;letter-spacing:1px;text-transform:uppercase;color:var(--muted);">Price</span>
-                <span style="font-size:13px;font-weight:600;color:var(--accent)">₹14–28 / strip of 20</span>
-              </div>
-            </div>
           </div>
         </div>
 
@@ -816,16 +845,6 @@
             <div class="ai-avatar bot">✦</div>
             <div class="ai-bubble">
               I have full context on <strong>Metformin</strong> loaded. You can ask me about its mechanism, which manufacturer to trust, how it interacts with specific drugs, or whether it's safe for a particular patient profile.
-            </div>
-          </div>
-          <div class="ai-msg user">
-            <div class="ai-avatar human">P</div>
-            <div class="ai-bubble">Is Metformin safe to take with blood pressure medication?</div>
-          </div>
-          <div class="ai-msg">
-            <div class="ai-avatar bot">✦</div>
-            <div class="ai-bubble">
-              Generally yes — most antihypertensives are <strong style="color:var(--accent)">compatible with Metformin</strong>. ACE inhibitors and ARBs are actually commonly co-prescribed for diabetic patients since they also protect kidneys. However, if you're taking a <strong>diuretic</strong>, watch for dehydration, which could affect kidney function and how Metformin is cleared. Always confirm with your prescriber before combining.
             </div>
           </div>
         </div>
@@ -919,6 +938,66 @@
     document.getElementById('tab-' + name).classList.add('active');
   }
 
+  function renderSideEffects(sideEffects) {
+    let html = '';
+    
+    if (sideEffects.major && sideEffects.major.length > 0) {
+      html += `<div class="sideeffect-section">
+        <div class="sideeffect-section-title sideeffect-major-title">🚨 Major Side Effects</div>
+        <div class="sideeffect-list">
+          ${sideEffects.major.map(se => `
+            <div class="sideeffect-item">
+              <div class="sideeffect-dot sideeffect-dot-major"></div>
+              <div class="sideeffect-content">
+                <div class="sideeffect-name">${se.name}</div>
+                <div class="sideeffect-note">${se.note}</div>
+                <div class="sideeffect-frequency">${se.frequency}</div>
+              </div>
+            </div>
+          `).join('')}
+        </div>
+      </div>`;
+    }
+    
+    if (sideEffects.moderate && sideEffects.moderate.length > 0) {
+      html += `<div class="sideeffect-section">
+        <div class="sideeffect-section-title sideeffect-moderate-title">⚠️ Moderate Side Effects</div>
+        <div class="sideeffect-list">
+          ${sideEffects.moderate.map(se => `
+            <div class="sideeffect-item">
+              <div class="sideeffect-dot sideeffect-dot-moderate"></div>
+              <div class="sideeffect-content">
+                <div class="sideeffect-name">${se.name}</div>
+                <div class="sideeffect-note">${se.note}</div>
+                <div class="sideeffect-frequency">${se.frequency}</div>
+              </div>
+            </div>
+          `).join('')}
+        </div>
+      </div>`;
+    }
+    
+    if (sideEffects.minor && sideEffects.minor.length > 0) {
+      html += `<div class="sideeffect-section">
+        <div class="sideeffect-section-title sideeffect-minor-title">ℹ️ Minor Side Effects</div>
+        <div class="sideeffect-list">
+          ${sideEffects.minor.map(se => `
+            <div class="sideeffect-item">
+              <div class="sideeffect-dot sideeffect-dot-minor"></div>
+              <div class="sideeffect-content">
+                <div class="sideeffect-name">${se.name}</div>
+                <div class="sideeffect-note">${se.note}</div>
+                <div class="sideeffect-frequency">${se.frequency}</div>
+              </div>
+            </div>
+          `).join('')}
+        </div>
+      </div>`;
+    }
+    
+    return html;
+  }
+
   const drugDatabase = {
     'Metformin': {
       name: 'Metformin',
@@ -936,6 +1015,22 @@
       overview: {
         class: 'Biguanide', use: 'Type 2 Diabetes', approval: '1994', halfLife: '4-9 hours', route: 'Oral', schedule: 'Not Scheduled',
         mechanism: 'Metformin works primarily by <strong style="color:var(--text)">inhibiting hepatic glucose production</strong> in the liver. It activates AMP-activated protein kinase (AMPK), which improves insulin sensitivity and reduces intestinal glucose absorption. Unlike sulfonylureas, it does not stimulate insulin secretion and is not associated with hypoglycemia when used as monotherapy.'
+      },
+      sideEffects: {
+        major: [
+          { name: 'Lactic Acidosis', note: 'Rare but serious buildup of lactic acid in the blood. Stop taking immediately and seek emergency care if experiencing muscle pain, breathing difficulty, or unusual fatigue.', frequency: 'Very rare (0.03 per 1000 patient-years)' }
+        ],
+        moderate: [
+          { name: 'Nausea / Vomiting', note: 'Stomach upset is the most common complaint when starting. Usually improves within 1-2 weeks as your body adjusts.', frequency: 'Common (up to 30% of new users)' },
+          { name: 'Diarrhea / Loose Stools', note: 'Gastrointestinal upset is often the first side effect. Taking with food or using extended-release form can help reduce this.', frequency: 'Common (10-30%)' },
+          { name: 'Stomach Pain / Cramping', note: 'Mild to moderate abdominal discomfort may occur, especially with higher doses or when taken without food.', frequency: 'Fairly common (10-15%)' },
+          { name: 'Vitamin B12 Deficiency', note: 'Long-term use (>2 years) may reduce B12 absorption, causing numbness or fatigue. Monitor B12 levels yearly if taking long-term.', frequency: 'Moderate risk with long-term use' }
+        ],
+        minor: [
+          { name: 'Metallic Taste', note: 'Some people report a bitter or metallic taste in their mouth. Usually harmless and temporary.', frequency: 'Uncommon (3-5%)' },
+          { name: 'Headache', note: 'Mild headaches may occur in the first few days of treatment. Usually resolves on its own.', frequency: 'Uncommon' },
+          { name: 'Dizziness', note: 'Light-headedness or dizziness may occur, especially if blood sugar drops too quickly.', frequency: 'Uncommon' }
+        ]
       },
       interactions: [
         { drug: 'Contrast Media (Iodinated)', note: 'Risk of lactic acidosis — hold before procedures', severity: 'major' },
@@ -984,6 +1079,22 @@
         class: 'ACE Inhibitor', use: 'Hypertension, Heart Failure', approval: '1987', halfLife: '12 hours', route: 'Oral', schedule: 'Not Scheduled',
         mechanism: 'Lisinopril inhibits <strong style="color:var(--text)">angiotensin-converting enzyme (ACE)</strong>, preventing conversion of angiotensin I to angiotensin II. This reduces vasoconstriction and aldosterone secretion, lowering blood pressure and reducing cardiac workload. It also preserves kidney function in diabetic patients by reducing intraglomerular pressure.'
       },
+      sideEffects: {
+        major: [
+          { name: 'Angioedema (Severe Swelling)', note: 'Rare but serious swelling of face, lips, tongue, or throat. Seek emergency care immediately if this occurs.', frequency: 'Very rare (0.1%)' }
+        ],
+        moderate: [
+          { name: 'Dry Cough', note: 'The most common side effect. Harmless but can be persistent and annoying. May develop weeks or months after starting treatment.', frequency: 'Very common (10-20%)' },
+          { name: 'Dizziness / Lightheadedness', note: 'More likely when starting or when dose is increased. Usually improves as your body adjusts. Be careful when standing up quickly.', frequency: 'Common (7-8%)' },
+          { name: 'Fatigue / Weakness', note: 'Feeling tired or lacking energy is a common initial effect. Usually improves over time.', frequency: 'Common (6-7%)' },
+          { name: 'Hyperkalemia (High Potassium)', note: 'Blood potassium levels may rise, especially if you have kidney problems. Monitor potassium levels during treatment.', frequency: 'Moderate risk' }
+        ],
+        minor: [
+          { name: 'Headache', note: 'Mild headaches may occur, especially early in treatment.', frequency: 'Uncommon (3-4%)' },
+          { name: 'Loss of Taste', note: 'Some people report changes in taste perception, usually temporary.', frequency: 'Rare (1-2%)' },
+          { name: 'Nasal Congestion', note: 'Stuffy nose may occur in some users.', frequency: 'Rare' }
+        ]
+      },
       interactions: [
         { drug: 'Potassium / K-sparing diuretics', note: 'Risk of dangerous hyperkalemia', severity: 'major' },
         { drug: 'NSAIDs (Ibuprofen, Naproxen)', note: 'Reduced antihypertensive effect, kidney risk', severity: 'moderate' },
@@ -993,8 +1104,7 @@
       manufacturers: [
         { name: 'Torrent Pharmaceuticals', country: '🇮🇳 India', est: '1959', brand: 'Listril®', rating: 'A', rc: 'var(--accent)', price: '₹195–210 / strip of 14' },
         { name: 'Lupin Pharmaceuticals', country: '🇮🇳 India', est: '1968', brand: 'Lisinace®', rating: 'A', rc: 'var(--accent)', price: '₹180–200 / strip of 14' },
-        { name: 'Aurobindo Pharma', country: '🇮🇳 India', est: '1986', brand: 'Lisino®', rating: 'A', rc: 'var(--accent)', price: '₹160–185 / strip of 14' },
-        { name: "Dr. Reddy's Laboratories", country: '🇮🇳 India', est: '1984', brand: 'Redihope®', rating: 'A', rc: 'var(--accent)', price: '₹170–195 / strip of 14' }
+        { name: 'Aurobindo Pharma', country: '🇮🇳 India', est: '1986', brand: 'Lisino®', rating: 'A', rc: 'var(--accent)', price: '₹160–185 / strip of 14' }
       ],
       dosage: {
         initial: '10 mg once daily', max: '40 mg/day', forms: 'Tablet, Oral Solution', takeWith: 'With or without food',
@@ -1031,6 +1141,21 @@
         class: 'HMG-CoA Reductase Inhibitor', use: 'High Cholesterol, CVD Prevention', approval: '1996', halfLife: '14 hours', route: 'Oral', schedule: 'Not Scheduled',
         mechanism: 'Atorvastatin competitively inhibits <strong style="color:var(--text)">HMG-CoA reductase</strong>, the rate-limiting enzyme in cholesterol biosynthesis in the liver. This reduces LDL cholesterol by up to 60%, lowers triglycerides, and modestly raises HDL. It also has anti-inflammatory effects on arterial walls.'
       },
+      sideEffects: {
+        major: [
+          { name: 'Muscle Breakdown (Rhabdomyolysis)', note: 'Rare but serious breakdown of muscle tissue. Stop taking immediately and seek emergency care if experiencing severe muscle pain, dark urine, or fever.', frequency: 'Very rare (< 0.1%)' }
+        ],
+        moderate: [
+          { name: 'Muscle Pain / Myalgia', note: 'The most common side effect. Usually mild and improves over time. More likely at higher doses.', frequency: 'Common (5-10%)' },
+          { name: 'Liver Enzyme Elevation', note: 'Liver function tests may show elevated enzymes. Usually returns to normal when stopping the drug. Regular monitoring is important.', frequency: 'Moderate (3%)' },
+          { name: 'Nausea', note: 'Stomach upset or mild nausea may occur, especially when first starting.', frequency: 'Fairly common (3-5%)' }
+        ],
+        minor: [
+          { name: 'Joint Pain', note: 'Mild aches in joints may develop. Usually mild and manageable.', frequency: 'Uncommon (2-3%)' },
+          { name: 'Headache', note: 'Mild to moderate headaches may occur.', frequency: 'Uncommon' },
+          { name: 'Memory Issues', note: 'Some people report mild memory changes or confusion. Rare and usually reversible.', frequency: 'Rare (< 1%)' }
+        ]
+      },
       interactions: [
         { drug: 'Clarithromycin / Itraconazole', note: 'Strong CYP3A4 inhibitors — major myopathy risk', severity: 'major' },
         { drug: 'Cyclosporine', note: 'Significantly raises atorvastatin levels', severity: 'major' },
@@ -1039,9 +1164,7 @@
       ],
       manufacturers: [
         { name: 'Zydus Lifesciences', country: '🇮🇳 India', est: '1952', brand: 'Atorva®', rating: 'A', rc: 'var(--accent)', price: '₹155–175 / strip of 10' },
-        { name: "Dr. Reddy's Laboratories", country: '🇮🇳 India', est: '1984', brand: 'Atocor®', rating: 'A', rc: 'var(--accent)', price: '₹140–160 / strip of 10' },
-        { name: 'IPCA Laboratories', country: '🇮🇳 India', est: '1949', brand: 'Lipicure®', rating: 'A', rc: 'var(--accent)', price: '₹80–107 / strip of 20' },
-        { name: 'Ranbaxy (Sun Pharma)', country: '🇮🇳 India', est: '1961', brand: 'Storvas®', rating: 'A', rc: 'var(--accent)', price: '₹670–890 / strip of 30' }
+        { name: "Dr. Reddy's Laboratories", country: '🇮🇳 India', est: '1984', brand: 'Atocor®', rating: 'A', rc: 'var(--accent)', price: '₹140–160 / strip of 10' }
       ],
       dosage: {
         initial: '10–20 mg once daily', max: '80 mg/day', forms: 'Tablet', takeWith: 'Any time of day, consistently',
@@ -1056,8 +1179,7 @@
         { label: 'FDA Approval', date: 'December 1996' },
         { label: "World's Best-Selling Drug", date: '2003' },
         { label: 'Generic Entry (US)', date: 'November 2011' },
-        { label: 'WHO Essential List', date: '2015' },
-        { label: 'Pediatric Indication Approved', date: '2018' }
+        { label: 'WHO Essential List', date: '2015' }
       ]
     },
 
@@ -1078,6 +1200,21 @@
         class: 'Beta-lactam Antibiotic', use: 'Bacterial Infections', approval: '1974', halfLife: '1-1.5 hours', route: 'Oral, IV', schedule: 'Not Scheduled',
         mechanism: 'Amoxicillin binds to <strong style="color:var(--text)">penicillin-binding proteins (PBPs)</strong> on bacterial cell walls, inhibiting transpeptidation — the final step in peptidoglycan synthesis. This weakens the bacterial cell wall, leading to osmotic lysis and bacterial death.'
       },
+      sideEffects: {
+        major: [
+          { name: 'Severe Allergic Reaction (Anaphylaxis)', note: 'Rare but life-threatening reaction. Seek emergency care immediately if experiencing difficulty breathing, throat swelling, or severe rash.', frequency: 'Very rare (< 0.1%)' }
+        ],
+        moderate: [
+          { name: 'Rash / Allergic Reaction', note: 'Mild to moderate rash is the most common allergic side effect. Appears within first few days of treatment. Stop taking and contact doctor immediately.', frequency: 'Common in allergic individuals (5-10%)' },
+          { name: 'Diarrhea', note: 'Gastrointestinal upset and loose stools are common with antibiotics as they disrupt gut bacteria.', frequency: 'Common (10-25%)' },
+          { name: 'Nausea / Vomiting', note: 'Stomach upset may occur, especially when taking on an empty stomach.', frequency: 'Fairly common (5%)' }
+        ],
+        minor: [
+          { name: 'Yeast Infection', note: 'Antibiotics can kill beneficial bacteria, allowing yeast to overgrow. More common in women and with prolonged courses.', frequency: 'Uncommon (2-5%)' },
+          { name: 'Headache', note: 'Mild headaches may occur.', frequency: 'Uncommon' },
+          { name: 'Oral Thrush', note: 'Fungal infection of the mouth characterized by white patches. Rinse mouth after taking liquid suspension.', frequency: 'Rare' }
+        ]
+      },
       interactions: [
         { drug: 'Methotrexate', note: 'Amoxicillin reduces methotrexate clearance — toxicity risk', severity: 'major' },
         { drug: 'Warfarin', note: 'May enhance anticoagulant effect — monitor INR', severity: 'moderate' },
@@ -1086,9 +1223,7 @@
       ],
       manufacturers: [
         { name: 'Cipla', country: '🇮🇳 India', est: '1935', brand: 'Novamox®', rating: 'A', rc: 'var(--accent)', price: '₹48–65 / strip of 10' },
-        { name: 'Alkem Laboratories', country: '🇮🇳 India', est: '1973', brand: 'Almox®', rating: 'A', rc: 'var(--accent)', price: '₹59–75 / strip of 10' },
-        { name: 'Sun Pharmaceutical', country: '🇮🇳 India', est: '1983', brand: 'Mox®', rating: 'A', rc: 'var(--accent)', price: '₹45–60 / strip of 10' },
-        { name: 'GSK India', country: '🇮🇳 India (GSK)', est: '1924', brand: 'Augmentin®', rating: 'A+', rc: 'var(--warn)', price: '₹180–220 / strip of 6' }
+        { name: 'Alkem Laboratories', country: '🇮🇳 India', est: '1973', brand: 'Almox®', rating: 'A', rc: 'var(--accent)', price: '₹59–75 / strip of 10' }
       ],
       dosage: {
         initial: '250–500 mg every 8 hours', max: '3000 mg/day', forms: 'Capsule, Tablet, Oral Suspension', takeWith: 'With or without food',
@@ -1103,8 +1238,7 @@
         { label: 'Developed at Beecham Research Labs', date: '1972' },
         { label: 'FDA Approval', date: '1974' },
         { label: 'WHO Essential List (First)', date: '1977' },
-        { label: 'Generic Widely Available', date: '1985' },
-        { label: 'Most Prescribed Antibiotic Worldwide', date: '2000s' }
+        { label: 'Generic Widely Available', date: '1985' }
       ]
     },
 
@@ -1125,6 +1259,21 @@
         class: 'Non-selective NSAID', use: 'Pain, Fever, Inflammation', approval: '1974', halfLife: '2 hours', route: 'Oral, IV, Topical', schedule: 'OTC / Rx (higher doses)',
         mechanism: 'Ibuprofen non-selectively inhibits <strong style="color:var(--text)">cyclooxygenase enzymes COX-1 and COX-2</strong>, blocking prostaglandin synthesis. Prostaglandins mediate pain sensitization, fever, and inflammation. By reducing prostaglandin levels, ibuprofen provides analgesic, antipyretic, and anti-inflammatory effects within 30-60 minutes of oral dosing.'
       },
+      sideEffects: {
+        major: [
+          { name: 'GI Bleeding / Ulcer Perforation', note: 'Serious gastrointestinal bleeding or perforation can occur, especially with long-term use or at high doses. Seek emergency care if vomiting blood or passing black/tarry stools.', frequency: 'Rare but serious (1-3% with chronic use)' }
+        ],
+        moderate: [
+          { name: 'Stomach Pain / Ulcers', note: 'Nausea, heartburn, or stomach discomfort are common, especially without food. Risk increases with long-term use.', frequency: 'Common (15-20%)' },
+          { name: 'High Blood Pressure Elevation', note: 'NSAIDs can raise blood pressure, especially problematic if you already have hypertension.', frequency: 'Moderate' },
+          { name: 'Kidney Problems', note: 'Long-term or high-dose use can reduce kidney function. Risk higher in elderly patients or those with existing kidney disease.', frequency: 'Moderate with chronic use' }
+        ],
+        minor: [
+          { name: 'Headache', note: 'Mild headaches may occur, though the drug itself treats headaches.', frequency: 'Uncommon' },
+          { name: 'Dizziness', note: 'Light-headedness may occur with higher doses.', frequency: 'Uncommon' },
+          { name: 'Rash', note: 'Mild skin reactions are rare but possible.', frequency: 'Rare (< 1%)' }
+        ]
+      },
       interactions: [
         { drug: 'Warfarin / Blood thinners', note: 'Significantly increases bleeding risk', severity: 'major' },
         { drug: 'Lithium', note: 'NSAIDs raise lithium blood levels by ~15-60%', severity: 'major' },
@@ -1133,9 +1282,7 @@
       ],
       manufacturers: [
         { name: 'Abbott India', country: '🇮🇳 India', est: '1944', brand: 'Brufen®', rating: 'A+', rc: 'var(--warn)', price: '₹30–45 / strip of 10' },
-        { name: 'Cipla', country: '🇮🇳 India', est: '1935', brand: 'Ibugesic®', rating: 'A', rc: 'var(--accent)', price: '₹26–34 / strip of 15' },
-        { name: 'Sanofi India', country: '🇮🇳 India (Sanofi)', est: '1956', brand: 'Combiflam®', rating: 'A+', rc: 'var(--warn)', price: '₹43–58 / strip of 20' },
-        { name: "Dr. Reddy's Laboratories", country: '🇮🇳 India', est: '1984', brand: 'Nurofen®', rating: 'A', rc: 'var(--accent)', price: '₹35–50 / strip of 10' }
+        { name: 'Cipla', country: '🇮🇳 India', est: '1935', brand: 'Ibugesic®', rating: 'A', rc: 'var(--accent)', price: '₹26–34 / strip of 15' }
       ],
       dosage: {
         initial: '200–400 mg every 4-6 hours', max: '1200 mg/day (OTC) · 3200 mg/day (Rx)', forms: 'Tablet, Capsule, Liquid, IV, Gel', takeWith: 'Food or milk to reduce GI upset',
@@ -1150,8 +1297,7 @@
         { label: 'Discovered by Stewart Adams (Boots)', date: '1961' },
         { label: 'UK Prescription Approval', date: '1969' },
         { label: 'FDA Approval (Rx)', date: '1974' },
-        { label: 'OTC Approval in US', date: '1984' },
-        { label: 'WHO Essential List', date: '1998' }
+        { label: 'OTC Approval in US', date: '1984' }
       ]
     }
   };
@@ -1205,6 +1351,9 @@
     ic[4].textContent = drug.overview.route;
     ic[5].textContent = drug.overview.schedule;
     document.querySelector('#tab-overview p').innerHTML = drug.overview.mechanism;
+
+    // Side Effects
+    document.getElementById('sideEffectsContent').innerHTML = renderSideEffects(drug.sideEffects);
 
     // Interactions
     document.querySelector('.interaction-list').innerHTML = drug.interactions.map(i => `
@@ -1260,7 +1409,7 @@
     // AI intro
     document.getElementById('aiMessages').innerHTML = `
       <div class="ai-msg"><div class="ai-avatar bot">✦</div>
-      <div class="ai-bubble">I have full context on <strong>${drug.name}</strong> loaded. Ask me about its mechanism, manufacturer reliability, interactions, or patient safety.</div></div>`;
+      <div class="ai-bubble">I have full context on <strong>${drug.name}</strong> loaded. Ask me about its mechanism, side effects, manufacturer reliability, interactions, or patient safety.</div></div>`;
 
     // Reset to plain english tab
     document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
@@ -1269,9 +1418,9 @@
     document.getElementById('tab-summary').classList.add('active');
   }
 
-  // Load Metformin patient summary on page load
+  // Load Metformin on page load
   window.addEventListener('DOMContentLoaded', () => {
-    document.getElementById('patientSummary').innerHTML = renderPatientSummary(drugDatabase['Metformin'].patientSummary);
+    document.getElementById('sideEffectsContent').innerHTML = renderSideEffects(drugDatabase['Metformin'].sideEffects);
   });
 
   function sendMessage() {
@@ -1296,19 +1445,11 @@
     container.scrollTop = container.scrollHeight;
     input.value = '';
 
-    const responses = [
-      "Based on the current drug profile, this is a well-studied medication with decades of safety data. I recommend consulting the prescribing information and speaking with your healthcare provider for personalized guidance.",
-      "The manufacturer data shows multiple approved sources for this drug, all with high quality ratings. Generic versions are bioequivalent to the brand name and are generally equally effective.",
-      "Looking at the interaction profile, this combination warrants monitoring but is not necessarily contraindicated. The clinical significance depends on dosage and the patient's kidney function.",
-      "This drug has been on the WHO Essential Medicines List, which reflects strong evidence of safety and efficacy across diverse populations worldwide."
-    ];
-    const reply = responses[Math.floor(Math.random() * responses.length)];
-
     setTimeout(() => {
       document.getElementById(typingId).outerHTML = `
         <div class="ai-msg">
           <div class="ai-avatar bot">✦</div>
-          <div class="ai-bubble">${reply}</div>
+          <div class="ai-bubble">Based on the drug profile, this is a well-studied medication with good safety data. Always consult your healthcare provider for personalized guidance.</div>
         </div>`;
       container.scrollTop = container.scrollHeight;
     }, 1800);
