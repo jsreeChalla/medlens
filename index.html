@@ -583,10 +583,40 @@
         </div>
 
         <div class="drug-tabs">
-          <div class="tab active" onclick="switchTab('overview', this)">Overview</div>
+          <div class="tab active" onclick="switchTab('summary', this)">In Plain English</div>
+          <div class="tab" onclick="switchTab('overview', this)">Overview</div>
           <div class="tab" onclick="switchTab('interactions', this)">Interactions</div>
           <div class="tab" onclick="switchTab('manufacturers', this)">Manufacturers</div>
           <div class="tab" onclick="switchTab('dosage', this)">Dosage</div>
+        </div>
+
+        <!-- PLAIN ENGLISH TAB -->
+        <div class="tab-content active" id="tab-summary">
+          <div id="patientSummary">
+            <div style="display:flex;flex-direction:column;gap:14px;">
+              <div style="background:linear-gradient(135deg,rgba(0,212,170,0.07),rgba(59,130,246,0.05));border:1px solid rgba(0,212,170,0.2);border-radius:14px;padding:20px 22px;">
+                <div style="font-size:28px;margin-bottom:10px;">💊</div>
+                <div style="font-size:11px;font-family:'DM Mono',monospace;letter-spacing:1.5px;text-transform:uppercase;color:var(--accent);margin-bottom:8px;">What is it?</div>
+                <div style="font-size:15px;line-height:1.7;color:var(--text);">Metformin is a tablet you take to manage blood sugar levels in Type 2 diabetes. It's usually the first medicine doctors prescribe when you're diagnosed.</div>
+              </div>
+              <div style="background:var(--bg);border:1px solid var(--border);border-radius:14px;padding:18px 22px;">
+                <div style="font-size:11px;font-family:'DM Mono',monospace;letter-spacing:1.5px;text-transform:uppercase;color:var(--accent2);margin-bottom:8px;">How does it help?</div>
+                <div style="font-size:14px;line-height:1.75;color:var(--muted);">Your liver constantly releases sugar into your blood — even when you haven't eaten. Metformin tells your liver to slow this down, so your blood sugar doesn't spike as much throughout the day.</div>
+              </div>
+              <div style="background:var(--bg);border:1px solid var(--border);border-radius:14px;padding:18px 22px;">
+                <div style="font-size:11px;font-family:'DM Mono',monospace;letter-spacing:1.5px;text-transform:uppercase;color:var(--accent2);margin-bottom:8px;">Taking it day to day</div>
+                <div style="font-size:14px;line-height:1.75;color:var(--muted);">You'll typically take it 2 times a day with meals. Taking it with food is important — it reduces stomach discomfort which is the most common complaint when starting.</div>
+              </div>
+              <div style="background:rgba(245,158,11,0.05);border:1px solid rgba(245,158,11,0.2);border-radius:14px;padding:18px 22px;">
+                <div style="font-size:11px;font-family:'DM Mono',monospace;letter-spacing:1.5px;text-transform:uppercase;color:var(--warn);margin-bottom:8px;">⚠ Watch out for</div>
+                <div style="font-size:14px;line-height:1.75;color:var(--muted);">Some people feel nauseous or have loose stools when they first start. This usually settles in 1–2 weeks. If you're having a scan with dye (contrast) at a hospital, tell your doctor — you may need to temporarily stop Metformin.</div>
+              </div>
+              <div style="background:var(--bg);border:1px solid var(--border);border-radius:14px;padding:18px 22px;">
+                <div style="font-size:11px;font-family:'DM Mono',monospace;letter-spacing:1.5px;text-transform:uppercase;color:var(--accent);margin-bottom:8px;">💡 Good to know</div>
+                <div style="font-size:14px;line-height:1.75;color:var(--muted);">Unlike many diabetes medicines, Metformin does NOT cause weight gain or low blood sugar on its own. It's been used safely for over 30 years and is on the WHO list of essential medicines.</div>
+              </div>
+            </div>
+          </div>
         </div>
 
         <!-- OVERVIEW TAB -->
@@ -677,93 +707,61 @@
             <div class="mfr-card">
               <div class="mfr-header">
                 <div class="mfr-logo-placeholder">🏭</div>
-                <div>
-                  <div class="mfr-name">Bristol-Myers Squibb</div>
-                  <div class="mfr-country">🇺🇸 United States</div>
-                </div>
+                <div><div class="mfr-name">USV Private Limited</div><div class="mfr-country">🇮🇳 India</div></div>
               </div>
               <div class="mfr-stats">
-                <div class="mfr-stat">
-                  <div class="mfr-stat-label">Est.</div>
-                  <div class="mfr-stat-value">1887</div>
-                </div>
-                <div class="mfr-stat">
-                  <div class="mfr-stat-label">Brand</div>
-                  <div class="mfr-stat-value">Glucophage®</div>
-                </div>
-                <div class="mfr-stat">
-                  <div class="mfr-stat-label">FDA Rating</div>
-                  <div class="mfr-stat-value" style="color:var(--warn)">A+</div>
-                </div>
+                <div class="mfr-stat"><div class="mfr-stat-label">Est.</div><div class="mfr-stat-value">1961</div></div>
+                <div class="mfr-stat"><div class="mfr-stat-label">Brand</div><div class="mfr-stat-value">Glycomet®</div></div>
+                <div class="mfr-stat"><div class="mfr-stat-label">Rating</div><div class="mfr-stat-value" style="color:var(--accent)">A</div></div>
+              </div>
+              <div style="margin-top:10px;padding-top:10px;border-top:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;">
+                <span style="font-size:10px;font-family:'DM Mono',monospace;letter-spacing:1px;text-transform:uppercase;color:var(--muted);">Price</span>
+                <span style="font-size:13px;font-weight:600;color:var(--accent)">₹15–32 / strip of 20</span>
               </div>
             </div>
             <div class="mfr-card">
               <div class="mfr-header">
                 <div class="mfr-logo-placeholder">🏭</div>
-                <div>
-                  <div class="mfr-name">Teva Pharmaceuticals</div>
-                  <div class="mfr-country">🇮🇱 Israel</div>
-                </div>
+                <div><div class="mfr-name">Cipla</div><div class="mfr-country">🇮🇳 India</div></div>
               </div>
               <div class="mfr-stats">
-                <div class="mfr-stat">
-                  <div class="mfr-stat-label">Est.</div>
-                  <div class="mfr-stat-value">1901</div>
-                </div>
-                <div class="mfr-stat">
-                  <div class="mfr-stat-label">Brand</div>
-                  <div class="mfr-stat-value">Generic</div>
-                </div>
-                <div class="mfr-stat">
-                  <div class="mfr-stat-label">FDA Rating</div>
-                  <div class="mfr-stat-value" style="color:var(--accent)">A</div>
-                </div>
+                <div class="mfr-stat"><div class="mfr-stat-label">Est.</div><div class="mfr-stat-value">1935</div></div>
+                <div class="mfr-stat"><div class="mfr-stat-label">Brand</div><div class="mfr-stat-value">Okamet®</div></div>
+                <div class="mfr-stat"><div class="mfr-stat-label">Rating</div><div class="mfr-stat-value" style="color:var(--accent)">A</div></div>
+              </div>
+              <div style="margin-top:10px;padding-top:10px;border-top:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;">
+                <span style="font-size:10px;font-family:'DM Mono',monospace;letter-spacing:1px;text-transform:uppercase;color:var(--muted);">Price</span>
+                <span style="font-size:13px;font-weight:600;color:var(--accent)">₹18–35 / strip of 15</span>
               </div>
             </div>
             <div class="mfr-card">
               <div class="mfr-header">
                 <div class="mfr-logo-placeholder">🏭</div>
-                <div>
-                  <div class="mfr-name">Sun Pharmaceutical</div>
-                  <div class="mfr-country">🇮🇳 India</div>
-                </div>
+                <div><div class="mfr-name">Lupin Pharmaceuticals</div><div class="mfr-country">🇮🇳 India</div></div>
               </div>
               <div class="mfr-stats">
-                <div class="mfr-stat">
-                  <div class="mfr-stat-label">Est.</div>
-                  <div class="mfr-stat-value">1983</div>
-                </div>
-                <div class="mfr-stat">
-                  <div class="mfr-stat-label">Brand</div>
-                  <div class="mfr-stat-value">Generic</div>
-                </div>
-                <div class="mfr-stat">
-                  <div class="mfr-stat-label">FDA Rating</div>
-                  <div class="mfr-stat-value" style="color:var(--accent)">A</div>
-                </div>
+                <div class="mfr-stat"><div class="mfr-stat-label">Est.</div><div class="mfr-stat-value">1968</div></div>
+                <div class="mfr-stat"><div class="mfr-stat-label">Brand</div><div class="mfr-stat-value">Gluconorm®</div></div>
+                <div class="mfr-stat"><div class="mfr-stat-label">Rating</div><div class="mfr-stat-value" style="color:var(--accent)">A</div></div>
+              </div>
+              <div style="margin-top:10px;padding-top:10px;border-top:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;">
+                <span style="font-size:10px;font-family:'DM Mono',monospace;letter-spacing:1px;text-transform:uppercase;color:var(--muted);">Price</span>
+                <span style="font-size:13px;font-weight:600;color:var(--accent)">₹20–38 / strip of 15</span>
               </div>
             </div>
             <div class="mfr-card">
               <div class="mfr-header">
                 <div class="mfr-logo-placeholder">🏭</div>
-                <div>
-                  <div class="mfr-name">Merck KGaA</div>
-                  <div class="mfr-country">🇩🇪 Germany</div>
-                </div>
+                <div><div class="mfr-name">Corona Remedies</div><div class="mfr-country">🇮🇳 India</div></div>
               </div>
               <div class="mfr-stats">
-                <div class="mfr-stat">
-                  <div class="mfr-stat-label">Est.</div>
-                  <div class="mfr-stat-value">1668</div>
-                </div>
-                <div class="mfr-stat">
-                  <div class="mfr-stat-label">Brand</div>
-                  <div class="mfr-stat-value">Stagid®</div>
-                </div>
-                <div class="mfr-stat">
-                  <div class="mfr-stat-label">FDA Rating</div>
-                  <div class="mfr-stat-value" style="color:var(--accent)">A</div>
-                </div>
+                <div class="mfr-stat"><div class="mfr-stat-label">Est.</div><div class="mfr-stat-value">1993</div></div>
+                <div class="mfr-stat"><div class="mfr-stat-label">Brand</div><div class="mfr-stat-value">Obimet®</div></div>
+                <div class="mfr-stat"><div class="mfr-stat-label">Rating</div><div class="mfr-stat-value" style="color:var(--accent)">A</div></div>
+              </div>
+              <div style="margin-top:10px;padding-top:10px;border-top:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;">
+                <span style="font-size:10px;font-family:'DM Mono',monospace;letter-spacing:1px;text-transform:uppercase;color:var(--muted);">Price</span>
+                <span style="font-size:13px;font-weight:600;color:var(--accent)">₹14–28 / strip of 20</span>
               </div>
             </div>
           </div>
@@ -852,7 +850,7 @@
         </div>
         <div class="stat-row">
           <div class="stat-row-label">Avg. Monthly Cost</div>
-          <div class="stat-row-value">$4 – $30</div>
+          <div class="stat-row-value">₹30 – ₹250</div>
         </div>
         <div class="stat-row">
           <div class="stat-row-label">Pregnancy Cat.</div>
@@ -921,11 +919,360 @@
     document.getElementById('tab-' + name).classList.add('active');
   }
 
-  function loadDrug(name) {
-    document.getElementById('searchInput').value = name;
-    // Demo: just update the name display
-    document.getElementById('drugName').textContent = name;
+  const drugDatabase = {
+    'Metformin': {
+      name: 'Metformin',
+      generic: 'Metformin Hydrochloride · Glucophage®',
+      drugClass: 'Biguanide · Antidiabetic',
+      rx: true,
+      patientSummary: {
+        emoji: '💊',
+        whatIsIt: 'Metformin is a tablet you take to manage blood sugar levels in Type 2 diabetes. It is usually the first medicine doctors prescribe when you are diagnosed.',
+        howItHelps: 'Your liver constantly releases sugar into your blood even when you have not eaten. Metformin tells your liver to slow this down, so your blood sugar does not spike as much throughout the day.',
+        dailyLife: 'You will typically take it 2 times a day with meals. Taking it with food is important as it reduces stomach discomfort which is the most common complaint when starting.',
+        watchOut: 'Some people feel nauseous or have loose stools when they first start. This usually settles in 1 to 2 weeks. If you are having a scan with dye (contrast) at a hospital, tell your doctor as you may need to temporarily stop Metformin.',
+        goodToKnow: 'Unlike many diabetes medicines, Metformin does NOT cause weight gain or low blood sugar on its own. It has been used safely for over 30 years and is on the WHO list of essential medicines.'
+      },
+      overview: {
+        class: 'Biguanide', use: 'Type 2 Diabetes', approval: '1994', halfLife: '4-9 hours', route: 'Oral', schedule: 'Not Scheduled',
+        mechanism: 'Metformin works primarily by <strong style="color:var(--text)">inhibiting hepatic glucose production</strong> in the liver. It activates AMP-activated protein kinase (AMPK), which improves insulin sensitivity and reduces intestinal glucose absorption. Unlike sulfonylureas, it does not stimulate insulin secretion and is not associated with hypoglycemia when used as monotherapy.'
+      },
+      interactions: [
+        { drug: 'Contrast Media (Iodinated)', note: 'Risk of lactic acidosis — hold before procedures', severity: 'major' },
+        { drug: 'Alcohol', note: 'Increased risk of lactic acidosis and hypoglycemia', severity: 'moderate' },
+        { drug: 'Topiramate', note: 'May increase metformin plasma concentration', severity: 'moderate' },
+        { drug: 'Vitamin B12', note: 'Long-term use may reduce B12 absorption', severity: 'minor' }
+      ],
+      manufacturers: [
+        { name: 'USV Private Limited', country: '🇮🇳 India', est: '1961', brand: 'Glycomet®', rating: 'A', rc: 'var(--accent)', price: '₹15–32 / strip of 20' },
+        { name: 'Cipla', country: '🇮🇳 India', est: '1935', brand: 'Okamet®', rating: 'A', rc: 'var(--accent)', price: '₹18–35 / strip of 15' },
+        { name: 'Lupin Pharmaceuticals', country: '🇮🇳 India', est: '1968', brand: 'Gluconorm®', rating: 'A', rc: 'var(--accent)', price: '₹20–38 / strip of 15' },
+        { name: 'Corona Remedies', country: '🇮🇳 India', est: '1993', brand: 'Obimet®', rating: 'A', rc: 'var(--accent)', price: '₹14–28 / strip of 20' }
+      ],
+      dosage: {
+        initial: '500 mg twice daily', max: '2550 mg', forms: 'Tablet, ER Tablet, Liquid', takeWith: 'Food (reduces GI upset)',
+        special: [
+          { color: 'var(--warn)', icon: '⚠', label: 'Renal Impairment', text: 'Contraindicated if eGFR < 30. Use with caution if eGFR 30-45 mL/min/1.73m².' },
+          { color: 'var(--accent2)', icon: '👶', label: 'Pediatric', text: 'Approved for children 10 years and above. Dosing follows adult guidelines.' },
+          { color: 'var(--muted)', icon: '🤰', label: 'Pregnancy', text: 'Category B. Often used during pregnancy for gestational diabetes.' }
+        ]
+      },
+      sidebar: { who: 'Yes', generic: 'Yes', cost: '₹30 – ₹250', pregnancy: 'B', controlled: 'No', interactions: '47' },
+      timeline: [
+        { label: 'Phase III Trials Complete', date: '1993' },
+        { label: 'FDA Approval', date: 'March 1994' },
+        { label: 'Generic Entry', date: '2002' },
+        { label: 'WHO Essential List', date: '2007' },
+        { label: 'Extended Release Approved', date: '2012' }
+      ]
+    },
+
+    'Lisinopril': {
+      name: 'Lisinopril',
+      generic: 'Lisinopril · Prinivil® · Zestril®',
+      drugClass: 'ACE Inhibitor · Antihypertensive',
+      rx: true,
+      patientSummary: {
+        emoji: '❤️',
+        whatIsIt: 'Lisinopril is a blood pressure tablet. Doctors also prescribe it after a heart attack or for people with heart failure or diabetic kidney disease.',
+        howItHelps: 'Your body produces a chemical that tightens blood vessels and raises blood pressure. Lisinopril blocks this chemical, so your blood vessels relax and your heart does not have to work as hard.',
+        dailyLife: 'Take it once a day at the same time each day. It does not matter if you have eaten or not. You may not feel it working — that is normal. Blood pressure medicines work silently.',
+        watchOut: 'About 1 in 10 people develop a dry, tickly cough. This is harmless but annoying — tell your doctor if it bothers you, as they can switch you to a similar medicine. Do NOT take this if you are pregnant.',
+        goodToKnow: 'Lisinopril is one of the most prescribed medicines in India for good reason — it is effective, affordable (as low as ₹160 for 2 weeks), and also protects your kidneys if you have diabetes.'
+      },
+      overview: {
+        class: 'ACE Inhibitor', use: 'Hypertension, Heart Failure', approval: '1987', halfLife: '12 hours', route: 'Oral', schedule: 'Not Scheduled',
+        mechanism: 'Lisinopril inhibits <strong style="color:var(--text)">angiotensin-converting enzyme (ACE)</strong>, preventing conversion of angiotensin I to angiotensin II. This reduces vasoconstriction and aldosterone secretion, lowering blood pressure and reducing cardiac workload. It also preserves kidney function in diabetic patients by reducing intraglomerular pressure.'
+      },
+      interactions: [
+        { drug: 'Potassium / K-sparing diuretics', note: 'Risk of dangerous hyperkalemia', severity: 'major' },
+        { drug: 'NSAIDs (Ibuprofen, Naproxen)', note: 'Reduced antihypertensive effect, kidney risk', severity: 'moderate' },
+        { drug: 'Lithium', note: 'ACE inhibitors increase lithium levels', severity: 'moderate' },
+        { drug: 'Antacids', note: 'May slightly reduce absorption', severity: 'minor' }
+      ],
+      manufacturers: [
+        { name: 'Torrent Pharmaceuticals', country: '🇮🇳 India', est: '1959', brand: 'Listril®', rating: 'A', rc: 'var(--accent)', price: '₹195–210 / strip of 14' },
+        { name: 'Lupin Pharmaceuticals', country: '🇮🇳 India', est: '1968', brand: 'Lisinace®', rating: 'A', rc: 'var(--accent)', price: '₹180–200 / strip of 14' },
+        { name: 'Aurobindo Pharma', country: '🇮🇳 India', est: '1986', brand: 'Lisino®', rating: 'A', rc: 'var(--accent)', price: '₹160–185 / strip of 14' },
+        { name: "Dr. Reddy's Laboratories", country: '🇮🇳 India', est: '1984', brand: 'Redihope®', rating: 'A', rc: 'var(--accent)', price: '₹170–195 / strip of 14' }
+      ],
+      dosage: {
+        initial: '10 mg once daily', max: '40 mg/day', forms: 'Tablet, Oral Solution', takeWith: 'With or without food',
+        special: [
+          { color: 'var(--danger)', icon: '🚫', label: 'Pregnancy — CONTRAINDICATED', text: 'Category D. Can cause fetal injury or death. Discontinue immediately if pregnancy is detected.' },
+          { color: 'var(--warn)', icon: '⚠', label: 'Renal Impairment', text: 'Reduce dose if eGFR < 30 mL/min. Monitor potassium and creatinine closely.' },
+          { color: 'var(--accent2)', icon: '👴', label: 'Elderly', text: 'Start at lower doses (2.5-5 mg). Increased risk of hypotension and kidney impairment.' }
+        ]
+      },
+      sidebar: { who: 'Yes', generic: 'Yes', cost: '₹40 – ₹200', pregnancy: 'D', controlled: 'No', interactions: '62' },
+      timeline: [
+        { label: 'FDA Approval (Hypertension)', date: 'December 1987' },
+        { label: 'Heart Failure Indication', date: '1993' },
+        { label: 'Post-MI Indication Added', date: '1995' },
+        { label: 'Generic Entry', date: '2002' },
+        { label: 'WHO Essential List', date: '2009' }
+      ]
+    },
+
+    'Atorvastatin': {
+      name: 'Atorvastatin',
+      generic: 'Atorvastatin Calcium · Lipitor®',
+      drugClass: 'Statin · Lipid-Lowering Agent',
+      rx: true,
+      patientSummary: {
+        emoji: '🫀',
+        whatIsIt: 'Atorvastatin is a cholesterol-lowering tablet. Doctors prescribe it when your LDL (bad) cholesterol is too high, or to reduce your risk of a heart attack or stroke.',
+        howItHelps: 'Your liver naturally makes cholesterol. Atorvastatin reduces how much cholesterol your liver produces, which lowers the amount circulating in your blood and building up in your arteries.',
+        dailyLife: 'Take it once a day — any time of day, but be consistent. You can take it with or without food. Avoid drinking large amounts of grapefruit juice as it can increase the medication in your blood.',
+        watchOut: 'Some people get mild muscle aches, especially if starting a higher dose. If you have severe muscle pain or dark-coloured urine, contact your doctor immediately. Do NOT take if you are pregnant or planning to become pregnant.',
+        goodToKnow: 'You may need to take Atorvastatin for life, even if your cholesterol becomes normal. Indian brands like Lipicure® and Atocor® are just as effective as the original Lipitor® at a fraction of the cost.'
+      },
+      overview: {
+        class: 'HMG-CoA Reductase Inhibitor', use: 'High Cholesterol, CVD Prevention', approval: '1996', halfLife: '14 hours', route: 'Oral', schedule: 'Not Scheduled',
+        mechanism: 'Atorvastatin competitively inhibits <strong style="color:var(--text)">HMG-CoA reductase</strong>, the rate-limiting enzyme in cholesterol biosynthesis in the liver. This reduces LDL cholesterol by up to 60%, lowers triglycerides, and modestly raises HDL. It also has anti-inflammatory effects on arterial walls.'
+      },
+      interactions: [
+        { drug: 'Clarithromycin / Itraconazole', note: 'Strong CYP3A4 inhibitors — major myopathy risk', severity: 'major' },
+        { drug: 'Cyclosporine', note: 'Significantly raises atorvastatin levels', severity: 'major' },
+        { drug: 'Amiodarone', note: 'Increased risk of muscle damage', severity: 'moderate' },
+        { drug: 'Grapefruit juice', note: 'Inhibits CYP3A4, raises drug levels', severity: 'minor' }
+      ],
+      manufacturers: [
+        { name: 'Zydus Lifesciences', country: '🇮🇳 India', est: '1952', brand: 'Atorva®', rating: 'A', rc: 'var(--accent)', price: '₹155–175 / strip of 10' },
+        { name: "Dr. Reddy's Laboratories", country: '🇮🇳 India', est: '1984', brand: 'Atocor®', rating: 'A', rc: 'var(--accent)', price: '₹140–160 / strip of 10' },
+        { name: 'IPCA Laboratories', country: '🇮🇳 India', est: '1949', brand: 'Lipicure®', rating: 'A', rc: 'var(--accent)', price: '₹80–107 / strip of 20' },
+        { name: 'Ranbaxy (Sun Pharma)', country: '🇮🇳 India', est: '1961', brand: 'Storvas®', rating: 'A', rc: 'var(--accent)', price: '₹670–890 / strip of 30' }
+      ],
+      dosage: {
+        initial: '10–20 mg once daily', max: '80 mg/day', forms: 'Tablet', takeWith: 'Any time of day, consistently',
+        special: [
+          { color: 'var(--danger)', icon: '🚫', label: 'Pregnancy — CONTRAINDICATED', text: 'Category X. Cholesterol is needed for fetal development. Discontinue before conception.' },
+          { color: 'var(--warn)', icon: '⚠', label: 'Muscle Toxicity', text: 'Monitor for myopathy and rhabdomyolysis, especially at higher doses or with interacting drugs.' },
+          { color: 'var(--accent2)', icon: '🍊', label: 'Grapefruit', text: 'Avoid large quantities of grapefruit juice — increases drug exposure significantly.' }
+        ]
+      },
+      sidebar: { who: 'Yes', generic: 'Yes', cost: '₹80 – ₹400', pregnancy: 'X', controlled: 'No', interactions: '55' },
+      timeline: [
+        { label: 'FDA Approval', date: 'December 1996' },
+        { label: "World's Best-Selling Drug", date: '2003' },
+        { label: 'Generic Entry (US)', date: 'November 2011' },
+        { label: 'WHO Essential List', date: '2015' },
+        { label: 'Pediatric Indication Approved', date: '2018' }
+      ]
+    },
+
+    'Amoxicillin': {
+      name: 'Amoxicillin',
+      generic: 'Amoxicillin Trihydrate · Amoxil®',
+      drugClass: 'Aminopenicillin · Antibiotic',
+      rx: true,
+      patientSummary: {
+        emoji: '🦠',
+        whatIsIt: 'Amoxicillin is an antibiotic — a medicine that kills bacteria. It is one of the most commonly prescribed medicines in India for throat infections, ear infections, chest infections, and UTIs.',
+        howItHelps: 'Bacteria have a protective wall around them. Amoxicillin breaks down this wall, causing the bacteria to burst and die. It does NOT work on viral infections like the common cold or flu.',
+        dailyLife: 'Usually taken 3 times a day for 5 to 7 days. Always complete the full course even if you feel better after 2 to 3 days — stopping early can make the infection come back stronger.',
+        watchOut: 'If you are allergic to penicillin, do NOT take Amoxicillin — tell your doctor immediately. Watch for rash, swelling, or difficulty breathing which could be an allergic reaction.',
+        goodToKnow: 'Amoxicillin does not work for viral infections. Using antibiotics unnecessarily makes them less effective over time (antibiotic resistance). Only take it when prescribed by a doctor.'
+      },
+      overview: {
+        class: 'Beta-lactam Antibiotic', use: 'Bacterial Infections', approval: '1974', halfLife: '1-1.5 hours', route: 'Oral, IV', schedule: 'Not Scheduled',
+        mechanism: 'Amoxicillin binds to <strong style="color:var(--text)">penicillin-binding proteins (PBPs)</strong> on bacterial cell walls, inhibiting transpeptidation — the final step in peptidoglycan synthesis. This weakens the bacterial cell wall, leading to osmotic lysis and bacterial death.'
+      },
+      interactions: [
+        { drug: 'Methotrexate', note: 'Amoxicillin reduces methotrexate clearance — toxicity risk', severity: 'major' },
+        { drug: 'Warfarin', note: 'May enhance anticoagulant effect — monitor INR', severity: 'moderate' },
+        { drug: 'Oral Contraceptives', note: 'May reduce contraceptive efficacy (rare)', severity: 'minor' },
+        { drug: 'Probenecid', note: 'Increases amoxicillin blood levels', severity: 'minor' }
+      ],
+      manufacturers: [
+        { name: 'Cipla', country: '🇮🇳 India', est: '1935', brand: 'Novamox®', rating: 'A', rc: 'var(--accent)', price: '₹48–65 / strip of 10' },
+        { name: 'Alkem Laboratories', country: '🇮🇳 India', est: '1973', brand: 'Almox®', rating: 'A', rc: 'var(--accent)', price: '₹59–75 / strip of 10' },
+        { name: 'Sun Pharmaceutical', country: '🇮🇳 India', est: '1983', brand: 'Mox®', rating: 'A', rc: 'var(--accent)', price: '₹45–60 / strip of 10' },
+        { name: 'GSK India', country: '🇮🇳 India (GSK)', est: '1924', brand: 'Augmentin®', rating: 'A+', rc: 'var(--warn)', price: '₹180–220 / strip of 6' }
+      ],
+      dosage: {
+        initial: '250–500 mg every 8 hours', max: '3000 mg/day', forms: 'Capsule, Tablet, Oral Suspension', takeWith: 'With or without food',
+        special: [
+          { color: 'var(--warn)', icon: '⚠', label: 'Penicillin Allergy', text: 'Contraindicated in patients with known penicillin hypersensitivity. Cross-reactivity with cephalosporins possible.' },
+          { color: 'var(--accent2)', icon: '👶', label: 'Pediatric', text: 'Widely used in children. Weight-based dosing: 25-90 mg/kg/day depending on infection severity.' },
+          { color: 'var(--accent)', icon: '🤰', label: 'Pregnancy', text: 'Category B. Generally considered safe during pregnancy for bacterial infections.' }
+        ]
+      },
+      sidebar: { who: 'Yes', generic: 'Yes', cost: '₹30 – ₹150', pregnancy: 'B', controlled: 'No', interactions: '38' },
+      timeline: [
+        { label: 'Developed at Beecham Research Labs', date: '1972' },
+        { label: 'FDA Approval', date: '1974' },
+        { label: 'WHO Essential List (First)', date: '1977' },
+        { label: 'Generic Widely Available', date: '1985' },
+        { label: 'Most Prescribed Antibiotic Worldwide', date: '2000s' }
+      ]
+    },
+
+    'Ibuprofen': {
+      name: 'Ibuprofen',
+      generic: 'Ibuprofen · Advil® · Motrin®',
+      drugClass: 'NSAID · Analgesic / Anti-inflammatory',
+      rx: false,
+      patientSummary: {
+        emoji: '🌡️',
+        whatIsIt: 'Ibuprofen is a painkiller and anti-inflammatory medicine. You probably know it as Brufen® or Combiflam®. It is used for headaches, fever, period pain, muscle aches, and mild arthritis.',
+        howItHelps: 'When your body is injured or inflamed, it releases chemicals that cause pain and swelling. Ibuprofen blocks these chemicals, reducing pain, fever, and swelling within 30 to 60 minutes.',
+        dailyLife: 'Always take with food or a glass of milk — it can irritate the stomach lining if taken empty. Do not take for more than 3 days for fever or 5 days for pain without consulting a doctor.',
+        watchOut: 'Avoid if you have a stomach ulcer, kidney problems, or heart disease. Do not combine with blood thinners like Warfarin without asking your doctor. Avoid in the last 3 months of pregnancy.',
+        goodToKnow: 'Ibuprofen is stronger than Paracetamol for pain with inflammation such as dental pain or period cramps, but Paracetamol is gentler on the stomach. When in doubt, try Paracetamol first.'
+      },
+      overview: {
+        class: 'Non-selective NSAID', use: 'Pain, Fever, Inflammation', approval: '1974', halfLife: '2 hours', route: 'Oral, IV, Topical', schedule: 'OTC / Rx (higher doses)',
+        mechanism: 'Ibuprofen non-selectively inhibits <strong style="color:var(--text)">cyclooxygenase enzymes COX-1 and COX-2</strong>, blocking prostaglandin synthesis. Prostaglandins mediate pain sensitization, fever, and inflammation. By reducing prostaglandin levels, ibuprofen provides analgesic, antipyretic, and anti-inflammatory effects within 30-60 minutes of oral dosing.'
+      },
+      interactions: [
+        { drug: 'Warfarin / Blood thinners', note: 'Significantly increases bleeding risk', severity: 'major' },
+        { drug: 'Lithium', note: 'NSAIDs raise lithium blood levels by ~15-60%', severity: 'major' },
+        { drug: 'ACE Inhibitors / ARBs', note: 'Reduces antihypertensive effect, kidney risk', severity: 'moderate' },
+        { drug: 'Aspirin (low-dose)', note: 'May block cardioprotective effect of aspirin', severity: 'moderate' }
+      ],
+      manufacturers: [
+        { name: 'Abbott India', country: '🇮🇳 India', est: '1944', brand: 'Brufen®', rating: 'A+', rc: 'var(--warn)', price: '₹30–45 / strip of 10' },
+        { name: 'Cipla', country: '🇮🇳 India', est: '1935', brand: 'Ibugesic®', rating: 'A', rc: 'var(--accent)', price: '₹26–34 / strip of 15' },
+        { name: 'Sanofi India', country: '🇮🇳 India (Sanofi)', est: '1956', brand: 'Combiflam®', rating: 'A+', rc: 'var(--warn)', price: '₹43–58 / strip of 20' },
+        { name: "Dr. Reddy's Laboratories", country: '🇮🇳 India', est: '1984', brand: 'Nurofen®', rating: 'A', rc: 'var(--accent)', price: '₹35–50 / strip of 10' }
+      ],
+      dosage: {
+        initial: '200–400 mg every 4-6 hours', max: '1200 mg/day (OTC) · 3200 mg/day (Rx)', forms: 'Tablet, Capsule, Liquid, IV, Gel', takeWith: 'Food or milk to reduce GI upset',
+        special: [
+          { color: 'var(--danger)', icon: '🚫', label: 'Late Pregnancy — AVOID', text: 'Avoid after 20 weeks gestation. Risk of premature ductus arteriosus closure and fetal kidney problems.' },
+          { color: 'var(--warn)', icon: '⚠', label: 'GI Risk', text: 'Long-term use increases risk of peptic ulcers and GI bleeding, especially in elderly patients.' },
+          { color: 'var(--warn)', icon: '❤️', label: 'Cardiovascular Risk', text: 'Chronic use at high doses may increase risk of heart attack and stroke. Avoid in patients with heart disease.' }
+        ]
+      },
+      sidebar: { who: 'Yes', generic: 'Yes', cost: '₹20 – ₹120', pregnancy: 'C/D', controlled: 'No', interactions: '71' },
+      timeline: [
+        { label: 'Discovered by Stewart Adams (Boots)', date: '1961' },
+        { label: 'UK Prescription Approval', date: '1969' },
+        { label: 'FDA Approval (Rx)', date: '1974' },
+        { label: 'OTC Approval in US', date: '1984' },
+        { label: 'WHO Essential List', date: '1998' }
+      ]
+    }
+  };
+
+  function renderPatientSummary(ps) {
+    return `<div style="display:flex;flex-direction:column;gap:14px;">
+      <div style="background:linear-gradient(135deg,rgba(0,212,170,0.07),rgba(59,130,246,0.05));border:1px solid rgba(0,212,170,0.2);border-radius:14px;padding:20px 22px;">
+        <div style="font-size:28px;margin-bottom:10px;">${ps.emoji}</div>
+        <div style="font-size:11px;font-family:'DM Mono',monospace;letter-spacing:1.5px;text-transform:uppercase;color:var(--accent);margin-bottom:8px;">What is it?</div>
+        <div style="font-size:15px;line-height:1.7;color:var(--text);">${ps.whatIsIt}</div>
+      </div>
+      <div style="background:var(--bg);border:1px solid var(--border);border-radius:14px;padding:18px 22px;">
+        <div style="font-size:11px;font-family:'DM Mono',monospace;letter-spacing:1.5px;text-transform:uppercase;color:var(--accent2);margin-bottom:8px;">How does it help?</div>
+        <div style="font-size:14px;line-height:1.75;color:var(--muted);">${ps.howItHelps}</div>
+      </div>
+      <div style="background:var(--bg);border:1px solid var(--border);border-radius:14px;padding:18px 22px;">
+        <div style="font-size:11px;font-family:'DM Mono',monospace;letter-spacing:1.5px;text-transform:uppercase;color:var(--accent2);margin-bottom:8px;">Taking it day to day</div>
+        <div style="font-size:14px;line-height:1.75;color:var(--muted);">${ps.dailyLife}</div>
+      </div>
+      <div style="background:rgba(245,158,11,0.05);border:1px solid rgba(245,158,11,0.2);border-radius:14px;padding:18px 22px;">
+        <div style="font-size:11px;font-family:'DM Mono',monospace;letter-spacing:1.5px;text-transform:uppercase;color:var(--warn);margin-bottom:8px;">⚠ Watch out for</div>
+        <div style="font-size:14px;line-height:1.75;color:var(--muted);">${ps.watchOut}</div>
+      </div>
+      <div style="background:var(--bg);border:1px solid var(--border);border-radius:14px;padding:18px 22px;">
+        <div style="font-size:11px;font-family:'DM Mono',monospace;letter-spacing:1.5px;text-transform:uppercase;color:var(--accent);margin-bottom:8px;">💡 Good to know</div>
+        <div style="font-size:14px;line-height:1.75;color:var(--muted);">${ps.goodToKnow}</div>
+      </div>
+    </div>`;
   }
+
+  function loadDrug(name) {
+    const drug = drugDatabase[name];
+    if (!drug) return;
+    document.getElementById('searchInput').value = name;
+
+    // Header
+    document.getElementById('drugName').textContent = drug.name;
+    document.getElementById('drugGeneric').textContent = drug.generic;
+    document.querySelector('.drug-class-tag').textContent = drug.drugClass;
+    document.querySelectorAll('.status-pill')[1].textContent = drug.rx ? 'Rx Only' : 'OTC';
+
+    // Patient summary
+    document.getElementById('patientSummary').innerHTML = renderPatientSummary(drug.patientSummary);
+
+    // Overview
+    const ic = document.querySelectorAll('#tab-overview .info-card .info-value');
+    ic[0].textContent = drug.overview.class;
+    ic[1].textContent = drug.overview.use;
+    ic[2].textContent = drug.overview.approval;
+    ic[3].textContent = drug.overview.halfLife;
+    ic[4].textContent = drug.overview.route;
+    ic[5].textContent = drug.overview.schedule;
+    document.querySelector('#tab-overview p').innerHTML = drug.overview.mechanism;
+
+    // Interactions
+    document.querySelector('.interaction-list').innerHTML = drug.interactions.map(i => `
+      <div class="interaction-item">
+        <div class="interaction-left">
+          <div class="severity-dot sev-${i.severity}"></div>
+          <div><div class="interaction-drug">${i.drug}</div><div class="interaction-note">${i.note}</div></div>
+        </div>
+        <div class="severity-badge sev-badge-${i.severity}">${i.severity.charAt(0).toUpperCase()+i.severity.slice(1)}</div>
+      </div>`).join('');
+
+    // Manufacturers
+    document.querySelector('.manufacturer-grid').innerHTML = drug.manufacturers.map(m => `
+      <div class="mfr-card">
+        <div class="mfr-header">
+          <div class="mfr-logo-placeholder">🏭</div>
+          <div><div class="mfr-name">${m.name}</div><div class="mfr-country">${m.country}</div></div>
+        </div>
+        <div class="mfr-stats">
+          <div class="mfr-stat"><div class="mfr-stat-label">Est.</div><div class="mfr-stat-value">${m.est}</div></div>
+          <div class="mfr-stat"><div class="mfr-stat-label">Brand</div><div class="mfr-stat-value">${m.brand}</div></div>
+          <div class="mfr-stat"><div class="mfr-stat-label">Rating</div><div class="mfr-stat-value" style="color:${m.rc}">${m.rating}</div></div>
+        </div>
+        <div style="margin-top:10px;padding-top:10px;border-top:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;">
+          <span style="font-size:10px;font-family:'DM Mono',monospace;letter-spacing:1px;text-transform:uppercase;color:var(--muted);">Price</span>
+          <span style="font-size:13px;font-weight:600;color:var(--accent)">${m.price}</span>
+        </div>
+      </div>`).join('');
+
+    // Dosage
+    const dc = document.querySelectorAll('#tab-dosage .info-card .info-value');
+    dc[0].textContent = drug.dosage.initial;
+    dc[1].textContent = drug.dosage.max;
+    dc[2].textContent = drug.dosage.forms;
+    dc[3].textContent = drug.dosage.takeWith;
+    document.querySelector('#tab-dosage div[style*="flex-direction:column"]').innerHTML =
+      drug.dosage.special.map(s => `<div style="background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:14px 18px;font-size:13.5px;"><strong style="color:${s.color}">${s.icon} ${s.label}</strong> — ${s.text}</div>`).join('');
+
+    // Sidebar
+    const sv = document.querySelectorAll('.sidebar-card:first-child .stat-row-value');
+    sv[0].textContent = drug.sidebar.who; sv[0].style.color = drug.sidebar.who === 'Yes' ? 'var(--accent)' : 'var(--muted)';
+    sv[1].textContent = drug.sidebar.generic; sv[1].style.color = 'var(--accent)';
+    sv[2].textContent = drug.sidebar.cost; sv[2].style.color = '';
+    sv[3].textContent = drug.sidebar.pregnancy; sv[3].style.color = '';
+    sv[4].textContent = drug.sidebar.controlled; sv[4].style.color = drug.sidebar.controlled === 'No' ? 'var(--accent)' : 'var(--warn)';
+    sv[5].textContent = drug.sidebar.interactions; sv[5].style.color = 'var(--warn)';
+
+    // Timeline
+    document.querySelector('.timeline').innerHTML = drug.timeline.map(t => `
+      <div class="timeline-item"><div class="tl-dot done"></div>
+      <div><div class="tl-label">${t.label}</div><div class="tl-date">${t.date}</div></div></div>`).join('');
+
+    // AI intro
+    document.getElementById('aiMessages').innerHTML = `
+      <div class="ai-msg"><div class="ai-avatar bot">✦</div>
+      <div class="ai-bubble">I have full context on <strong>${drug.name}</strong> loaded. Ask me about its mechanism, manufacturer reliability, interactions, or patient safety.</div></div>`;
+
+    // Reset to plain english tab
+    document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+    document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+    document.querySelectorAll('.tab')[0].classList.add('active');
+    document.getElementById('tab-summary').classList.add('active');
+  }
+
+  // Load Metformin patient summary on page load
+  window.addEventListener('DOMContentLoaded', () => {
+    document.getElementById('patientSummary').innerHTML = renderPatientSummary(drugDatabase['Metformin'].patientSummary);
+  });
 
   function sendMessage() {
     const input = document.getElementById('aiInput');
@@ -933,14 +1280,12 @@
     if (!msg) return;
     const container = document.getElementById('aiMessages');
 
-    // Add user message
     container.innerHTML += `
       <div class="ai-msg user">
         <div class="ai-avatar human">P</div>
         <div class="ai-bubble">${msg}</div>
       </div>`;
 
-    // Add typing indicator
     const typingId = 'typing-' + Date.now();
     container.innerHTML += `
       <div class="ai-msg" id="${typingId}">
@@ -951,12 +1296,11 @@
     container.scrollTop = container.scrollHeight;
     input.value = '';
 
-    // Simulate AI response after delay
     const responses = [
-      "Based on the current drug profile, I can see this is a well-studied medication with decades of safety data. For your specific question, I recommend consulting the prescribing information and speaking with your healthcare provider for personalized guidance.",
-      "Great question. The manufacturer data shows multiple FDA-approved sources for this drug, all with high quality ratings. Generic versions are bioequivalent to the brand name and are generally equally effective.",
+      "Based on the current drug profile, this is a well-studied medication with decades of safety data. I recommend consulting the prescribing information and speaking with your healthcare provider for personalized guidance.",
+      "The manufacturer data shows multiple approved sources for this drug, all with high quality ratings. Generic versions are bioequivalent to the brand name and are generally equally effective.",
       "Looking at the interaction profile, this combination warrants monitoring but is not necessarily contraindicated. The clinical significance depends on dosage and the patient's kidney function.",
-      "This drug has been on the WHO Essential Medicines List since 2007, which reflects strong evidence of safety and efficacy across diverse populations worldwide."
+      "This drug has been on the WHO Essential Medicines List, which reflects strong evidence of safety and efficacy across diverse populations worldwide."
     ];
     const reply = responses[Math.floor(Math.random() * responses.length)];
 
@@ -970,8 +1314,10 @@
     }, 1800);
   }
 
-  document.getElementById('aiInput').addEventListener('keydown', e => {
-    if (e.key === 'Enter') sendMessage();
+  document.addEventListener('DOMContentLoaded', () => {
+    document.getElementById('aiInput').addEventListener('keydown', e => {
+      if (e.key === 'Enter') sendMessage();
+    });
   });
 </script>
 </body>
